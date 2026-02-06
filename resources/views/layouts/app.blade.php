@@ -16,6 +16,7 @@
     <link rel="stylesheet" href="{{ asset('css/main.css') }}" />
     <link rel="stylesheet" href="{{ asset('css/custom.css') }}" />
     <link rel="stylesheet" href="{{ asset('css/custom/categories.css') }}" />
+    <link rel="stylesheet" href="{{ asset('css/custom/units.css') }}" />
 
     <!-- <link rel="stylesheet" href="{{ asset('css/custom/'.request()->segment(1).'.css') }}" /> -->
 </head>

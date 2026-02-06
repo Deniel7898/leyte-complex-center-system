@@ -1,19 +1,19 @@
 <?php
 
 namespace App\Http\Controllers;
-use App\Models\Category;
+use App\Models\Units;
 use Illuminate\Http\Request;
 
-class CategoriesController extends Controller
+class UnitsController extends Controller
 {
     /**
      * Display a listing of the resource.
      */
     public function index()
     {
-        $categories = Category::all();
-        $categories_table = view('settings.categories.table', compact('categories'))->render();
-        return view('settings.categories.index', compact('categories_table')); 
+        $units = Units::all();
+        $units_table = view('settings.units.table', compact('units'))->render();
+        return view('settings.units.index', compact('units_table')); 
     }
 
     /**
@@ -21,7 +21,7 @@ class CategoriesController extends Controller
      */
     public function create()
     {
-        return view('settings.categories.form');
+        return view('settings.units.form');
     }
 
     /**
@@ -37,11 +37,11 @@ class CategoriesController extends Controller
         $validate['created_by'] = auth()->user()->id;
         $validate['updated_by'] = auth()->user()->id;
 
-        Category::create($validate);
+        Units::create($validate);
 
-        $categories = Category::all();
-        $categories_table = view('settings.categories.table', compact('categories'))->render();
-        return $categories_table;
+        $units = Units::all();
+        $units_table = view('settings.units.table', compact('units'))->render();
+        return $units_table;
     }
 
     /**
@@ -57,8 +57,8 @@ class CategoriesController extends Controller
      */
     public function edit(string $id)
     {
-        $category = Category::findOrFail($id);
-        return view('settings.categories.form', compact('category'));
+        $unit = Units::findOrFail($id);
+        return view('settings.units.form', compact('unit'));
     }
 
     /**
@@ -73,11 +73,11 @@ class CategoriesController extends Controller
 
         $validate['updated_by'] = auth()->user()->id;
 
-        Category::where('id', $id)->update($validate);
+        Units::where('id', $id)->update($validate);
 
-        $categories = Category::all();
-        $categories_table = view('settings.categories.table', compact('categories'))->render();
-        return $categories_table;
+        $units = Units::all();
+        $units_table = view('settings.units.table', compact('units'))->render();
+        return $units_table;
     }
 
     /**
@@ -85,10 +85,10 @@ class CategoriesController extends Controller
      */
     public function destroy(string $id)
     {
-        Category::destroy($id);
+        Units::destroy($id);
 
-        $categories = Category::all();
-        $categories_table = view('settings.categories.table', compact('categories'))->render();
-        return $categories_table;
+        $units = Units::all();
+        $units_table = view('settings.units.table', compact('units'))->render();
+        return $units_table;
     }
 }
