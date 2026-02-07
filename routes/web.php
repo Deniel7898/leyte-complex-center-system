@@ -35,6 +35,12 @@ Route::middleware('auth')->group(function () {
 });
 
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
+
+// Inventory and Items routes
+Route::get('inventory', [App\Http\Controllers\InventoryController::class, 'index'])->middleware('auth')->name('inventory.index');
+Route::resource('items', App\Http\Controllers\ItemController::class)->middleware('auth'); // includes all CRUD routes for items
+
+
+//Settings routes
 Route::resource('categories', App\Http\Controllers\CategoriesController::class)->middleware('auth'); // includes all CRUD routes for categories
-Route::resource('units', App\Http\Controllers\UnitsController::class)->middleware('auth'); // includes all CRUD routes for units
 Route::resource('units', App\Http\Controllers\UnitsController::class)->middleware('auth'); // includes all CRUD routes for units
